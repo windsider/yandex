@@ -1,31 +1,157 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01  
-Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<!DOCTYPE html> 
 <html lang="en"> 
 <head> 
  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> 
- <title>Calendar</title> 
- 
- <link href="stylesheet.css" rel="stylesheet"> 
+ <title>Calendar</title>  
+ <link href="stylesheet.css" rel="stylesheet">  
 </head> 
 
 <body> 
-
-<!--Calendar-->
-
+<!--Datepicker-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="jquery.ui.datepicker.min.js"></script>
+
 <div id="calendar"></div>
 <script>
     $('#calendar').datepicker({
         inline: true,
-        firstDay: 1,
+        firstDay: 1,		
         showOtherMonths: true,
-        dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+        dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+		
+	onSelect: function(dateText, inst) {
+	
+var weekday=new Array();
+weekday[0]="Monday";
+weekday[1]="Tuesday";
+weekday[2]="Wednesday";
+weekday[3]="Thursday";
+weekday[4]="Friday";
+weekday[5]="Saturday";
+weekday[6]="Sunday";
+var date = $(this).datepicker('getDate');
+
+	$('#date').html(weekday[date.getUTCDay()] + " "+ dateText);
+    $(this).css("background-color","");	  
+  }		  
     });
 </script>
 
-</body> 
-</html> 
+<!--Table#1 for booking-->
+<form method="POST" action="read.php" enctype="multipart/form-data">
+<table id ="book" border=1>
+<!--Table header for date-->
+<th colspan=3><p id ="date">Select a date in the datepicker on the left</p> </th>
+
+<!--The list of hours-->
+<tr id ="tr"><td><p><select size="5"  name="time[]" multiple="yes">
+<option disabled>Select time</option>
+    <option value="9:00-10:00">9:00-10:00</option>
+    <option value="10:00-11:00">10:00-11:00</option>
+    <option value="11:00-12:00">11:00-12:00</option>
+    <option value="13:00-14:00">13:00-14:00</option> 
+	<option value="14:00-15:00">14:00-15:00</option>
+    <option value="15:00-16:00">15:00-16:00</option>
+    <option value="16:00-17:00">16:00-17:00</option>
+    <option value="17:00-18:00">17:00-18:00</option> 
+	<option value="18:00-19:00">18:00-19:00</option>     
+   </select> </td><td><input type=submit name="time1" size="1" value="Book"> <td><input type="reset" value="Cancel" /></td></tr> 
+</table>
+</form>
+
+<!--Table#2 for booking-->
+<form method="POST" action="read.php" enctype="multipart/form-data">
+
+<!--The list of months-->
+<select id = "month"size="2" name="month[]" multiple="yes">
+<option disabled>Select a month</option>
+    <option>January</option>
+    <option>February</option>
+    <option>March</option>
+    <option>April</option> 
+	<option>May</option>
+    <option>June</option>
+    <option>July</option>
+    <option>August</option> 
+	<option>September</option>
+    <option>October</option>
+    <option>November</option>
+    <option>December</option>	
+   </select> 
+   
+   <!--The list of days-->
+   <select id = "day" size="2"  name="day[]" multiple="yes">
+<option disabled>Select a day</option>
+    <option>01</option>
+    <option>02</option>
+    <option>03</option>
+    <option>04</option> 
+	<option>05</option>
+    <option>06</option>
+    <option>07</option>
+    <option>08</option> 
+	<option>09</option>
+    <option>10</option>
+    <option>11</option>
+    <option>12</option>
+    <option>13</option>
+    <option>14</option>
+    <option>15</option>
+    <option>16</option>
+    <option>17</option>
+    <option>18</option>
+    <option>19</option>
+    <option>20</option>
+    <option>21</option>	
+    <option>22</option>
+    <option>23</option>
+    <option>23</option>
+    <option>24</option>
+    <option>25</option>
+    <option>26</option>
+    <option>27</option>
+    <option>28</option>
+    <option>29</option>
+    <option>30</option>
+    <option>31</option>
+   </select> 
+   
+   <!--The list of years-->
+   <select id ="year" size="2"  name="year[]" multiple="yes">
+<option disabled>Select a year</option>
+    <option>2013</option>    
+    <option>2014</option>
+    <option>2015</option>    
+   </select> 
+   
+   <select id = "weekday"size="2"  name="weekday[]" multiple="yes">
+<option disabled>Select a weekday</option>
+    <option>Monday</option>
+    <option>Tuesday</option>
+    <option>Wednesday</option>
+    <option>Thursday</option> 
+	<option>Friday</option>
+    <option>Saturday</option>
+    <option>Sunday</option>    	
+   </select> 
+   
+   <!--The list of hours-->
+   <div id ="time">
+   <p><select size="2"  name="time[]" multiple="yes">
+<option disabled>Select time</option>
+    <option value="9:00-10:00">9:00-10:00</option>
+    <option value="10:00-11:00">10:00-11:00</option>
+    <option value="11:00-12:00">11:00-12:00</option>
+    <option value="13:00-14:00">13:00-14:00</option> 
+	<option value="14:00-15:00">14:00-15:00</option>
+    <option value="15:00-16:00">15:00-16:00</option>
+    <option value="16:00-17:00">16:00-17:00</option>
+    <option value="17:00-18:00">17:00-18:00</option> 
+	<option value="18:00-19:00">18:00-19:00</option>     
+   </select> 
+   </div>
+   <input type=submit name="time1" size="1" value="Submit">
+        </form>
 
 
 </body> 
