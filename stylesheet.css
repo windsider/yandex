@@ -1,3 +1,5 @@
+/* Datepicker */
+
 .ui-datepicker,
 .ui-datepicker table,
 .ui-datepicker tr,
@@ -14,7 +16,6 @@
 
 .ui-datepicker {
     display: table-row;	
-	
     width: 294px;	
     padding: 35px;
     cursor: default;
@@ -137,7 +138,70 @@ margin: 0 20px 0 20px;
 .ui-datepicker-calendar .ui-state-active {
 font-weight: bold;
     color: #B22222;
-    border: 1px solid #B22222;;
+    border: 1px solid #B22222;
 }
  
 .ui-datepicker-other-month .ui-state-default { color: #a8a8a8; }
+
+/* The header of Table # 1*/
+
+#date {
+margin:5px;
+font-size: 13px;
+text-transform: uppercase;
+border-bottom: none;
+color: #B22222;    
+}
+ 
+ /* The Table # 1*/
+#book
+{
+position: absolute;
+float: left;
+border-collapse: collapse;
+float: right;
+right: 740px;
+top: 1px;
+width: 234px;	
+    padding: 15px;
+    cursor: default;
+
+    text-transform: uppercase;
+    font-family: Tahoma;
+    font-size: 13px; 
+    background: #E0EEEE; 
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px; 
+    -webkit-box-shadow: 0px 1px 1px rgba(255,255,255, .1), inset 0px 1px 1px rgb(0,0,0);
+    -moz-box-shadow: 0px 1px 1px rgba(255,255,255, .1), inset 0px 1px 1px rgb(0,0,0);
+    box-shadow: 0px 1px 1px rgba(255,255,255, .1), inset 0px 1px 1px rgb(0,0,0);	
+   
+}
+td{
+height: 10px;
+border: none;
+padding:1px 1px 1px 10px;
+}
+#tr{
+background-color: #F8F8FF;
+}
+
+/* The both forms */
+form {
+float: right;
+position: absolute;
+right: 10px;
+top: 8px;
+width: 600px;
+height: 40px;
+}
+
+/* The list of hours */
+#time {
+float: right;
+position: relative;
+top: -15px;
+right: 35px;
+}
+
