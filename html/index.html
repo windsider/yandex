@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Datepicker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+
+    <link href="stylesheet.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  
+
+</head>
+
+<body>
+
+
+    <!--Datepicker-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="jquery.ui.datepicker.min.js"></script>
+
+    <div id="calendar"></div>
+
+    <script>
+        $(document).ready(function () {
+
+            // selection according to a weekday
+            $("#sel").click(function () {
+                var wday = $("#select option:selected").text();
+                $("#date").text(wday);
+            });
+
+            $("#canl").click(function () {
+                var sel = document.getElementById('date');
+                sel.innerHTML = null;
+                return true;
+            });
+
+            //array for connection with a date
+            //var dts = dt.toString(); 
+
+            var dts = new Array();
+
+            dts[0] = "09:00 - 10:00";
+            dts[1] = "10:00 - 11:00";
+            dts[2] = "11:00 - 12:00";
+            dts[3] = "12:00 - 13:00";
+            dts[4] = "13:00 - 14:00";
+            dts[5] = "14:00 - 15:00";
+            dts[6] = "15:00 - 16:00";
+            dts[7] = "16:00 - 17:00";
+            dts[8] = "17:00 - 18:00";
+            dts[9] = "18:00 - 19:00";
+
+
+            $('#tm').html(dts[0]);
+            $('#tm1').html(dts[1]);
+            $('#tm2').html(dts[2]);
+            $('#tm3').html(dts[3]);
+            $('#tm4').html(dts[4]);
+            $('#tm5').html(dts[5]);
+            $('#tm6').html(dts[6]);
+            $('#tm7').html(dts[7]);
+            $('#tm8').html(dts[8]);
+            $('#tm9').html(dts[9]);
+
+            // jQuery UI datepicker
+
+            $('#calendar').datepicker({
+                inline: true,
+                showWeek: true,
+                selectDay: true,
+                minDate: 0,
+                maxDate: "+36M +30D",
+                dateFormat: 'DD, dd / mm / yy',
+                firstDay: 1,
+                showOtherMonths: true,
+                dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+
+                onSelect: function (dateText, inst) {
+
+                    var weekday = new Array();
+                    weekday[0] = "Monday";
+                    weekday[1] = "Tuesday";
+                    weekday[2] = "Wednesday";
+                    weekday[3] = "Thursday";
+                    weekday[4] = "Friday";
+                    weekday[5] = "Saturday";
+                    weekday[6] = "Sunday";
+                    var date = $(this).datepicker('getDate');
+
+                    // attempt to select multiple date
+                    /*var weekDay = [];
+
+                   var doc = date.getUTCDay();
+                   weekDay.push(weekday[date.getUTCDay()]); 
+
+                   var day = $('#date').text(weekday[date.getUTCDay()]); */
+
+                    // passing a date to schedule
+
+                    $('#date').text(dateText);
+
+
+
+                    // getting saved doc from server
+
+                    /*var doc = $("<table></table>").load("template.html #template");
+                    $('#schedule').append(doc); 
+ 
+                    dt = dateText;	
+                    moment(dt);*/
+
+                    // switching booked/available
+
+                    $("#btn").on("click", function () {
+                        $('#avl').html('booked');
+                        $('#avl').css("color", '#B22222');
+                        $('#tm').css("color", '#999');
+
+                    });
+
+
+                    $("#btn1").click(function () {
+                        $('#avl1').html('booked');
+                        $('#avl1').css("color", '#B22222');
+                        $('#tm1').css("color", '#999');
+                    });
+                    $("#btn2").click(function () {
+                        $('#avl2').html('booked');
+                        $('#avl2').css("color", '#B22222');
+                        $('#tm2').css("color", '#999');
+                    });
+                    $("#btn3").click(function () {
+                        $('#avl3').html('booked');
+                        $('#avl3').css("color", '#B22222');
+                        $('#tm3').css("color", '#999');
+                    });
+                    $("#btn4").click(function () {
+                        $('#avl4').html('booked');
+                        $('#avl4').css("color", '#B22222');
+                        $('#tm4').css("color", '#999');
+                    });
+                    $("#btn5").click(function () {
+                        $('#avl5').html('booked');
+                        $('#avl5').css("color", '#B22222');
+                        $('#tm5').css("color", '#999');
+                    });
+                    $("#btn6").click(function () {
+                        $('#avl6').html('booked');
+                        $('#avl6').css("color", '#B22222');
+                        $('#tm6').css("color", '#999');
+                    });
+                    $("#btn7").click(function () {
+                        $('#avl7').html('booked');
+                        $('#avl7').css("color", '#B22222');
+                        $('#tm7').css("color", '#999');
+                    });
+                    $("#btn8").click(function () {
+                        $('#avl8').html('booked');
+                        $('#avl8').css("color", '#B22222');
+                        $('#tm8').css("color", '#999');
+                    });
+                    $("#btn9").click(function () {
+                        $('#avl9').html('booked');
+                        $('#avl9').css("color", '#B22222');
+                        $('#tm9').css("color", '#999');
+                    });
+
+                    $("#btnc").on("click", function () {
+                        $('#avl').html('available');
+                        $('#avl').css("color", 'black');
+                        $('#tm').css("color", 'black');
+                    });
+
+                    $("#btnc1").on("click", function () {
+                        $('#avl1').html('available');
+                        $('#avl1').css("color", 'black');
+                        $('#tm1').css("color", 'black');
+                    });
+
+                    $("#btnc2").on("click", function () {
+                        $('#avl2').html('available');
+                        $('#avl2').css("color", 'black');
+                        $('#tm2').css("color", 'black');
+
+
+                    });
+                    $("#btnc3").on("click", function () {
+                        $('#avl3').html('available');
+                        $('#avl3').css("color", 'black');
+                        $('#tm3').css("color", 'black');
+                    });
+
+                    $("#btnc4").on("click", function () {
+                        $('#avl4').html('available');
+                        $('#avl4').css("color", 'black');
+                        $('#tm4').css("color", 'black');
+                    });
+
+                    $("#btnc5").on("click", function () {
+                        $('#avl5').html('available');
+                        $('#avl5').css("color", 'black');
+                        $('#tm5').css("color", 'black');
+                    });
+                    $("#btnc6").on("click", function () {
+                        $('#avl6').html('available');
+                        $('#avl6').css("color", 'black');
+                        $('#tm6').css("color", 'black');
+
+
+                    });
+                    $("#btnc7").on("click", function () {
+                        $('#avl7').html('available');
+                        $('#avl7').css("color", 'black');
+                        $('#tm7').css("color", 'black');
+                    });
+                    $("#btnc8").on("click", function () {
+                        $('#avl8').html('available');
+                        $('#avl8').css("color", 'black');
+                        $('#tm8').css("color", 'black');
+                    });
+                    $("#btnc9").on("click", function () {
+                        $('#avl9').html('available');
+                        $('#avl9').css("color", 'black');
+                        $('#tm9').css("color", 'black');
+                    });
+
+                }
+
+            });
+
+        });
+    </script>
+
+
+
+    <!--Table#1 for booking according to date-->
+
+
+    <table id="template">
+	<colgroup>
+    <col width="2" valign="top">
+    <col width="1" valign="top">
+	<col width="1" valign="top">
+	<col width="1" valign="top">
+  </colgroup>
+        <th colspan=4>
+            <p id="date">Select a date in the datepicker or a weekday on the right <span id="arr">&#8658;</span>
+            </p>
+        </th>
+        <tr class="tr">
+            <td id="tm"></td>
+                <td id="avl">available</td>
+                <td>
+                    <button type="button" id="btn" class="btn">book</button>
+                </td>
+                <td>
+                    <button type="button" id="btnc" class="btn">cancel</button>
+                </td>
+        </tr>
+        <tr>
+            <td id="tm1"></td>
+            <td id="avl1">available</td>
+            <td>
+                <button type="button" id="btn1" class="btn">book</button>
+            </td>
+            <td>
+                <button type="button" id="btnc1" class="btn">cancel</button>
+            </td>
+        </tr>
+        <tr class="tr">
+            <td id="tm2"></td>
+            <td id="avl2">available</td>
+            <td>
+                <button type="button" id="btn2" class="btn">book</button>
+            </td>
+            <td>
+                <button type="button" id="btnc2" class="btn">cancel</button>
+            </td>
+        </tr>
+        <tr>
+            <td id="tm3"></td>
+            <td id="avl3">available</td>
+            <td>
+                <button type="button" id="btn3" class="btn">book</button>
+            </td>
+            <td>
+                <button type="button" id="btnc3" class="btn">cancel</button>
+            </td>
+        </tr>
+        <tr class="tr">
+            <td id="tm4"></td>
+            <td id="avl4">available</td>
+            <td>
+                <button type="button" id="btn4" class="btn">book</button>
+            </td>
+            <td>
+                <button type="button" id="btnc4" class="btn">cancel</button>
+            </td>
+        </tr>
+        <tr>
+            <td id="tm5"></td>
+            <td id="avl5">available</td>
+            <td>
+                <button type="button" id="btn5" class="btn">book</button>
+            </td>
+            <td>
+                <button type="button" id="btnc5" class="btn">cancel</button>
+            </td>
+        </tr>
+        <tr class="tr">
+            <td id="tm6"></td>
+            <td id="avl6">available</td>
+            <td>
+                <button type="button" id="btn6" class="btn">book</button>
+            </td>
+            <td>
+                <button type="button" id="btnc6" class="btn">cancel</button>
+            </td>
+        </tr>
+        <tr>
+            <td id="tm7"></td>
+            <td id="avl7">available</td>
+            <td>
+                <button type="button" id="btn7" class="btn">book</button>
+            </td>
+            <td>
+                <button type="button" id="btnc7" class="btn">cancel</button>
+            </td>
+        </tr>
+        <tr class="tr">
+            <td id="tm8"></td>
+            <td id="avl8">available</td>
+            <td>
+                <button type="button" id="btn8" class="btn">book</button>
+            </td>
+            <td>
+                <button type="button" id="btnc8" class="btn">cancel</button>
+            </td>
+        </tr>
+        <tr>
+            <td id="tm9"></td>
+            <td id="avl9">available</td>
+            <td>
+                <button type="button" id="btn9" class="btn">book</button>
+            </td>
+            <td>
+                <button type="button" id="btnc9" class="btn">cancel</button>
+            </td>
+        </tr>
+
+    </table>
+
+    <!--Table#1 for booking according to a weekday-->
+    <table id="book">
+        <!--Table header for date-->
+        <th colspan=2>
+            <p>Select a day for periodic booking</p>
+        </th>
+
+        <!--The list of hours-->
+        <tr id="tr">
+            <td colspan=2>
+                <select id="select" size="6" name="time[]">
+                    <option value="10:00-11:00">Monday</option>
+                    <option value="11:00-12:00">Tuesday</option>
+                    <option value="13:00-14:00">Wednesday</option>
+                    <option value="14:00-15:00">Thursday</option>
+                    <option value="15:00-16:00">Friday</option>
+                    <option value="16:00-17:00">Saturday</option>
+                    <option value="17:00-18:00">Sunday</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="btm">
+                <button type="button" id="sel" class="btn">select</button>
+            </td>
+            <td class="btm">
+                <button type="button" id="canl" class="btn">cancel</button>
+            </td>
+        </tr>
+    </table>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap.js"></script>
+
+    <!-- Not to conflict with other scripts -->
+    <script>
+        $.noConflict();
+        jQuery(document).ready(function ($) {
+
+            $("#datepicker").datepicker({
+                minDate: +1,
+                dateFormat: "yy-mm-dd",
+                maxDate: "+0M +10D",
+                beforeShowDay: function (date) {
+                    var day = date.getDay();
+                    return [(day != 0), ''];
+                }
+            });
+
+        });
+    </script>
+    <script>
+    </script>
+
+</body>
+
+</html>
+    
+    
+    
