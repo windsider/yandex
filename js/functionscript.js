@@ -84,7 +84,7 @@ $('<tr><td colspan=2><input id ="sbt" type="submit" value="book"></td><td colspa
 		
 			});
 		
-					if ($(this).closest(table).children(tr).text() =="selected" || $(this).closest(table).children(tr).text() =="booked"){
+					if ($(this).closest('table').children('tr').children('td:nth-child(2)').text() =="selected" || $(this).closest('table').children('tr').children('td:nth-child(2)').text() =="booked"){
 					return false;
 					} 
 					else {
@@ -124,6 +124,9 @@ $('<option> </option>').append(weekday[k]).appendTo(wselect);
 });
 (wselect).wrap('<td></td>').wrap('<tr></tr>').appendTo(wtable);
 var wtr = $('<span id="wbtn"></span>');
+
+// buttons of table #2 selection according to a weekday
+
 $('<input type="button" id="sel" class="btn" value ="select">').wrap('<td></td>').prependTo(wtr);
 $('<input type="button" id="canl" class="btn" value="reset">').wrap('<td></td>').appendTo(wtr);
 (wtr).appendTo(wtable);
@@ -135,7 +138,9 @@ $('<input type="button" id="canl" class="btn" value="reset">').wrap('<td></td>')
                 var wday = $("#select option:selected").text();
                 $("#date").text(wday);
             });
+			
 // button reset
+
             $("#canl").click(function () {
                 var sel = document.getElementById('date');
                 sel.innerHTML = null;
