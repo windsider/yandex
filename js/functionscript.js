@@ -133,13 +133,13 @@ $('<input type="button" id="canl" class="btn" value="reset">').wrap('<td></td>')
 (wtable).appendTo("#wtable");
 
 	// buttons of table #2 selection according to a weekday
-	// button select
+	// select button 
             $("#sel").click(function () {
                 var wday = $("#select option:selected").text();
                 $("#date").text(wday);
             });
 			
-// button reset
+// reset button 
 
             $("#canl").click(function () {
                 var sel = document.getElementById('date');
