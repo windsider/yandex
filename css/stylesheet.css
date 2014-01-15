@@ -253,12 +253,12 @@ header
 }
 .ui-datepicker-prev span
 {
-	background-image: url(img/arrowsl.png);
+	background-image: url(../img/arrowsl.png);
 	background-position: 0px 0px;
 }
 .ui-datepicker-next span
 {
-	background-image: url(img/arrows.png);
+	background-image: url(../img/arrows.png);
 	background-position: -3px 0px;
 }
 .ui-datepicker-prev-hover span
