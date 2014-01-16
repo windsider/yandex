@@ -1,3 +1,7 @@
+*
+{
+	outline: solid 100%;
+}
 html
 {
 	font-family: sans-serif;
@@ -25,10 +29,9 @@ header
 {
 	display: block;
 }
-
-/* Table #1 - timetable*/
 #timetable
 {
+	border-top: 1px solid black;
 	position: absolute;
 	right: 800px;
 	table-layout: fixed;
@@ -45,38 +48,63 @@ header
 	vertical-align: middle;
 	width: 23%;
 }
-#timetable table tr td:first-child
+#timetable table td:first-child
 {
 	width: 31%;
+}
+#log
+{
+	width: 326%;
+}
+input:first-child
+{
+	border-left: 0;
+}
+.btn.log
+{
+	width: 49.398%;
+}
+.inputtext
+{
+	background-color: white;
+	border-bottom: 0;
+	border-right: 0;
+	border-top: 0;
+	color: #B22222;
+	font-size: 13px;
+	height: 17px;
+	text-align: center;
+	width: 48.7%;
+}
+.inputtext::-webkit-input-placeholder
+{
+	color: #B22222;
 }
 #timetable th
 {
 	border-collapse: collapse;
-	border-spacing: 60px;
-	border-top: 1px solid black;
+	height: 30px;
 	line-height: 1.428571429;
 	padding: 0 0 2px 0px;
 	text-align: center;
 	vertical-align: bottom;
 	width: 300px;
 }
-
-/* Table #1 - date*/
-
 #date
 {
 	border-bottom: none;
 	color: #B22222;
-	font-size: 12px;
-	height: 33px;
-	left: 35px;
-	line-height: 1.428571429;
-	margin-bottom: 1px;
+	font-size: 11px;
+	height: 25px;
+	left: 30px;
+	line-height: 1.228571429;
+	margin: 2px 0 0 0;
+	padding: 0;
 	position: relative;
 	text-transform: uppercase;
-	top: 4px;
+	top: 0;
 	vertical-align: top;
-	width: 230px;
+	width: 242px;
 }
 .tr
 {
@@ -118,10 +146,6 @@ header
 {
 	width: 100%;
 }
-
-
-/* Datepicker */
-
 .ui-datepicker,
 .ui-datepicker tr,
 .ui-datepicker td,
@@ -144,7 +168,7 @@ header
 	border: none;
 	border-spacing: 0;
 	color: #565656;
-	height: 273px;
+	height: 300px;
 	position: relative;
 	right: 8px;
 	top: 3px;
@@ -317,9 +341,6 @@ header
 {
 	background-position: -160px -32px;
 }
-
-/* Table #2 - weekdays*/
-
 #wtable table
 {
 	background: #F8F8F8;
@@ -338,7 +359,7 @@ header
 	float: right;
 	font-family: Tahoma;
 	font-size: 11px;
-	height: 324px;
+	height: 350px;
 	moz-border-radius: 3px;
 	moz-box-shadow: 0px 1px 1px rgba(255,255,255, .1), inset 0px 1px 1px rgb(0,0,0);
 	padding: 0;
@@ -369,7 +390,7 @@ header
 {
 	height: 101px;
 	left: 26px;
-	margin-bottom: 140px;
+	margin-bottom: 166px;
 	padding: 0;
 	position: relative;
 	top: 30px;
@@ -388,14 +409,10 @@ header
 	font-size: 15px;
 	position: relative;
 }
-/* arrow from bootstrap*/
 .glyphicon-arrow-right:before
 {
 	content: "\e092";
 }
-
-/* base table for loading page*/
-
 #template
 {
 	display: table;

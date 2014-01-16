@@ -60,7 +60,8 @@ $(document).ready(function ()
     });
     // buttons book and cancel of timetable #1
     $('<tr><td colspan=2><input id ="book" type="submit" value="book"></td><td colspan=2><input id ="cnl" type="reset" value="cancel"></td></tr>').appendTo(table);
-    // click events of buttons book and cancel
+    
+	// click events of buttons book and cancel
     //book button event
     	$("#book").on("click", function () 
     {
@@ -87,21 +88,16 @@ $(document).ready(function ()
     			
     $("#cnl").on("click", function () 
     {
-        $("#timetable table").find('td:nth-child(2)').each(function()
-        {
-            if ($(this).text() =="booked" ||$(this).text() =="selected")
-            {
-                $(this).text("available");
-                $('td').css("color", 'black');
-            }
-        });
+        $("#timetable table td:nth-child(2)").not(":last").text("available").css("color", 'black').prev().css("color", 'black');
     });
     // adding class to buttons
      $('input').addClass('btn');
+	 
     // adding class to tr
      $('#timetable table tr').addClass('tr');
     // adding id to th to get a date from datepicker
      $('#timetable table p').attr('id','date');
+	 
     //Table #2 for booking according to weekdays
     	
     var wtable =$('<table><th><p>Select a day for periodic booking</p></th></table>');
@@ -120,28 +116,25 @@ $(document).ready(function ()
     $('<input type="button" id="res" class="btn" value="reset">').wrap('<td></td>').appendTo(wtr);
     (wtr).appendTo(wtable);
     (wtable).appendTo("#wtable");
-    // button events of table #2 selection according to a weekday
+    
+	// button events of table #2 selection according to a weekday
     	// select button 
      $("#sel").click(function () 
     {
 	// this resets selections
-	$("#timetable table").find('td:nth-child(2)').each(function()
-            {
-                if ($(this).text() =="booked" ||$(this).text() =="selected")
-                $(this).text("available");
-                $('td').css("color", 'black');
-            });
-			
-        var wday =$("#select option:selected").text();
-        $("#date").text(wday);
+	$("#timetable table td:nth-child(2)").not(":last").text("available").css("color", 'black').prev().css("color", 'black');
+
+	    var wday =$("#select option:selected").text();		
+        
         if (!(wday).length)
         {
             alert ("Please, make WEEKDAY(s) selected");
+			return false;
         }
 		
-		
-		
+        $("#date").text(wday);		
     });
+	
     // reset button 
      $("#res").click(function () 
     {
@@ -149,6 +142,7 @@ $(document).ready(function ()
         sel.innerHTML =null;
         return true;
     });
+	
     // jQuery UI datepicker
      $('#calendar').datepicker({
         inline: true
@@ -163,12 +157,7 @@ $(document).ready(function ()
         , onSelect: function (dateText, inst) 
         {
             // now this resets selections, later here should be call to db or creating new timetable
-             $("#timetable table").find('td:nth-child(2)').each(function()
-            {
-                if ($(this).text() =="booked" ||$(this).text() =="selected")
-                $(this).text("available");
-                $('td').css("color", 'black');
-            });
+             $("#timetable table td:nth-child(2)").not(":last").text("available").css("color", 'black').prev().css("color", 'black');
             var date =$(this).datepicker('getDate');
             // for table header and book button
              dt =$('#date').text(dateText);
