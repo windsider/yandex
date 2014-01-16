@@ -23,7 +23,8 @@ $(document).ready(function ()
     dts[7] ="16:00 - 17:00";
     dts[8] ="17:00 - 18:00";
     dts[9] ="18:00 - 19:00";
-    // creating timetable #1 
+    
+	// creating timetable #1 
      
     var table =$('<table><th colspan=4><form><p>Select a date in the datepicker or a weekday on the right <span class="glyphicon-arrow-right:before"></span></p></form></th></table>');
     var i =-1;
@@ -40,10 +41,17 @@ $(document).ready(function ()
      
     $("#timetable table tr input:even").on("click", function () 
     {
+	if (!$(dt).length) 
+        {
+            alert ("Please, make a DATE selected");
+			return false;
+        }
         $(this).parent('td').prev().text('selected');
         $(this).parent('td').prevAll().css("color", '#FF8247');
     });
-    // click events of timetable #1: button reset
+    
+	
+	// click events of timetable #1: button reset
      
     $("#timetable table tr input:odd").on("click", function () 
     {
@@ -60,7 +68,7 @@ $(document).ready(function ()
         $(sld).text("booked").css("color", '#CD0000').prev().css("color", '#CD0000');
         if (!(sld).length &&!$(dt).length)
         {
-            alert ("Please, make OPTION(s) and a DATE selected");
+            alert ("Please, make a DATE and OPTION(s) selected");
              return false;
         }
         if ((sld).length &&$(dt).length) 
@@ -68,16 +76,14 @@ $(document).ready(function ()
             alert ("Your order is BOOKED. We thank you for the use of our service");
              /* go to db*/
         }
-        if (!$(dt).length) 
-        {
-            alert ("Please, make a DATE selected");
-        }
+        
         if (!(sld).length) 
         {
             alert ("Please, make OPTION(s) selected");
         }
     });
-    //cancel button event
+    
+	//cancel button event
     			
     $("#cnl").on("click", function () 
     {
@@ -108,7 +114,8 @@ $(document).ready(function ()
     });
     (wselect).wrap('<td></td>').wrap('<tr></tr>').appendTo(wtable);
     var wtr =$('<span id="wbtn"></span>');
-    // buttons of table #2 selection according to a weekday
+    
+	// buttons of table #2 selection according to a weekday
     $('<input type="button" id="sel" class="btn" value ="select">').wrap('<td></td>').prependTo(wtr);
     $('<input type="button" id="res" class="btn" value="reset">').wrap('<td></td>').appendTo(wtr);
     (wtr).appendTo(wtable);
@@ -165,6 +172,7 @@ $(document).ready(function ()
             var date =$(this).datepicker('getDate');
             // for table header and book button
              dt =$('#date').text(dateText);
+			 
             // attempt to select multiple date
              /*var weekDay = [];
  var doc = date.getUTCDay();
