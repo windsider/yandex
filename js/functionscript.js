@@ -117,12 +117,23 @@ $(document).ready(function ()
     	// select button 
      $("#sel").click(function () 
     {
+	// this resets selections
+	$("#timetable table").find('td:nth-child(2)').each(function()
+            {
+                if ($(this).text() =="booked" ||$(this).text() =="selected")
+                $(this).text("available");
+                $('td').css("color", 'black');
+            });
+			
         var wday =$("#select option:selected").text();
         $("#date").text(wday);
         if (!(wday).length)
         {
-            alert ("Please, make option(s) selected");
+            alert ("Please, make WEEKDAY(s) selected");
         }
+		
+		
+		
     });
     // reset button 
      $("#res").click(function () 
