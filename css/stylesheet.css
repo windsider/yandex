@@ -1,15 +1,25 @@
-*
-{
-	outline: solid 100%;
-}
 html
 {
 	font-family: sans-serif;
-	ms-text-size-adjust: 100%;
-	webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
 }
 body
 {
+	background-color: #ffffff;
+	color: #333333;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.428571429;
+	margin: 0;
+}
+button,
+input,
+select,
+textarea
+{
+	font-family: inherit;
+	font-size: 100%;
 	margin: 0;
 }
 button,
@@ -17,13 +27,21 @@ input
 {
 	line-height: normal;
 }
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"]
+{
+	cursor: pointer;
+	-webkit-appearance: button;
+}
 table
 {
 	border: 1px solid #ddd;
 	border-radius: 3px;
 	border-spacing: 0;
-	moz-border-radius: 5px;
-	webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 header
 {
@@ -31,7 +49,10 @@ header
 }
 #timetable
 {
+	border-left: 1px solid black;
+	border-radius: 3px;
 	border-top: 1px solid black;
+	box-shadow: 0px 1px 1px rgba(255,255,255, .1), inset 0px 1px 1px rgb(0,0,0);
 	position: absolute;
 	right: 800px;
 	table-layout: fixed;
@@ -56,15 +77,11 @@ header
 {
 	width: 326%;
 }
-input:first-child
-{
-	border-left: 0;
-}
 .btn.log
 {
-	width: 49.398%;
+	width: 32.94%;
 }
-.inputtext
+.loginform
 {
 	background-color: white;
 	border-bottom: 0;
@@ -72,16 +89,37 @@ input:first-child
 	border-top: 0;
 	color: #B22222;
 	font-size: 13px;
-	height: 17px;
-	text-align: center;
-	width: 48.7%;
+	height: 100%;
+	padding-left: 7px;
+	text-align: left;
+	width: 46.3%;
 }
-.inputtext::-webkit-input-placeholder
+#logform input:first-child
+{
+	border-left: 0;
+}
+.regform::-webkit-input-placeholder
 {
 	color: #B22222;
 }
+.loginform::-webkit-input-placeholder
+{
+	color: #B22222;
+}
+.regform
+{
+	border-left: 1px solid #ccc;
+	border-top: 0;
+	color: #B22222;
+	font-size: 13px;
+	height: 17px;
+	padding-left: 7px;
+	text-align: left;
+	width: 46.3%;
+}
 #timetable th
 {
+	border-bottom: 1px solid black;
 	border-collapse: collapse;
 	height: 30px;
 	line-height: 1.428571429;
@@ -168,34 +206,36 @@ input:first-child
 	border: none;
 	border-spacing: 0;
 	color: #565656;
-	height: 300px;
+	height: 300.5px;
 	position: relative;
 	right: 8px;
 	top: 3px;
 	width: 310px;
 }
-.ui-datepicker table th
+.ui-datepicker th
 {
+	height: 30px;
 	padding: 5px;
 }
 .ui-datepicker
 {
 	background: #F8F8F8;
+	border-left: 1px solid black;
 	border-radius: 3px;
 	box-shadow: 0px 1px 1px rgba(255,255,255, .1), inset 0px 1px 1px rgb(0,0,0);
 	cursor: default;
 	display: table-row;
 	font-family: Tahoma;
 	font-size: 14px;
-	moz-border-radius: 3px;
-	moz-box-shadow: 0px 1px 1px rgba(255,255,255, .1), inset 0px 1px 1px rgb(0,0,0);
+	-moz-border-radius: 3px;
+	-moz-box-shadow: 0px 1px 1px rgba(255,255,255, .1), inset 0px 1px 1px rgb(0,0,0);
 	padding: 0 20px 3px 10px;
 	position: absolute;
 	right: 451px;
 	text-transform: uppercase;
 	top: 10px;
-	webkit-border-radius: 3px;
-	webkit-box-shadow: 0px 1px 1px rgba(255,255,255, .1), inset 0px 1px 1px rgb(0,0,0);
+	-webkit-border-radius: 3px;
+	-webkit-box-shadow: 0px 1px 1px rgba(255,255,255, .1), inset 0px 1px 1px rgb(0,0,0);
 	width: 283px;
 }
 .ui-datepicker-header
@@ -241,11 +281,11 @@ input:first-child
 	content: '';
 	display: block;
 	height: 5px;
-	moz-border-radius: 5px;
+	-moz-border-radius: 5px;
 	position: absolute;
 	right: 0;
 	top: 5px;
-	webkit-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	width: 5px;
 }
 .ui-datepicker-prev,
@@ -348,9 +388,10 @@ input:first-child
 	background-image: -webkit-linear-gradient(top, #ffffff 0%, #e0e0e0 100%);
 	background-repeat: repeat-x;
 	border-collapse: collapse;
-	border-color: #ccc;
+	border-left: 1px solid black;
 	border-radius: 3px;
 	border-spacing: 0;
+	border-top: 1px solid black;
 	box-shadow: 0px 1px 1px rgba(255,255,255, .1), inset 0px 1px 1px rgb(0,0,0);
 	cursor: default;
 	display: table-column-group;
@@ -359,7 +400,7 @@ input:first-child
 	float: right;
 	font-family: Tahoma;
 	font-size: 11px;
-	height: 350px;
+	height: 353px;
 	moz-border-radius: 3px;
 	moz-box-shadow: 0px 1px 1px rgba(255,255,255, .1), inset 0px 1px 1px rgb(0,0,0);
 	padding: 0;
@@ -388,7 +429,8 @@ input:first-child
 }
 #select
 {
-	height: 101px;
+	font-size: 13px;
+	height: 96px;
 	left: 26px;
 	margin-bottom: 166px;
 	padding: 0;
@@ -412,32 +454,4 @@ input:first-child
 .glyphicon-arrow-right:before
 {
 	content: "\e092";
-}
-#template
-{
-	display: table;
-	position: absolute;
-	right: 1023px;
-	table-layout: fixed;
-	top: 10px;
-	width: 302px;
-}
-#template td
-{
-	border-collapse: collapse;
-	border-top: 1px solid white;
-	line-height: 1.428571429;
-	padding: 0 0 0 0px;
-	text-align: center;
-	vertical-align: top;
-}
-#template th
-{
-	border-collapse: collapse;
-	border-top: 1px solid white;
-	line-height: 1.428571429;
-	padding: 0 0 2px 10px;
-	text-align: center;
-	vertical-align: top;
-	width: 300px;
 }
