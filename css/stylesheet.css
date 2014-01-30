@@ -358,6 +358,13 @@ header {
     background-color:#47a447;
     border-color:#398439;
 }
+
+#calendar{
+    position: absolute;
+    left: 43.1%;
+    top:0;
+	
+}
 #wtable {
     position:absolute;
     top:0;
